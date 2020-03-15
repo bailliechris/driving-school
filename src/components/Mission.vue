@@ -41,6 +41,7 @@ p.mission{
 }
 
 p.sig{
-    font.size:1.5rem;
+    font-size:1.5rem;
+    font-family: cursive;
 }
 </style>

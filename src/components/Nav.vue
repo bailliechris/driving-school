@@ -9,18 +9,18 @@
             </b-navbar-item>
         </template>
         <template slot="start">
-            <b-navbar-item href="#">
+            <b-navbar-item href="#" @click="reset">
                 Home
             </b-navbar-item>
-            <b-navbar-item href="#">
-                Contact
+            <b-navbar-item href="#" @click="missionSelect">
+                Mission
             </b-navbar-item>
             <b-navbar-dropdown label="More">
-                <b-navbar-item href="#">
-                    About
+                <b-navbar-item href="#" @click="feedSelect">
+                    Facebook Updates
                 </b-navbar-item>
-                <b-navbar-item href="#">
-                    Mission
+                <b-navbar-item href="#" @click="gallerySelect">
+                    Gallery
                 </b-navbar-item>
             </b-navbar-dropdown>
         </template>
@@ -30,11 +30,25 @@
 <script>
 export default {
   name: 'Nav',
-  data:
-  function () {
+  data() {
     return {
     //  image: mdiPhone
     }
+  },
+  methods: {
+      missionSelect: function() {
+          this.$emit("next", 1);
+      },
+      feedSelect: function() {
+          this.$emit("next", 3);
+      },
+      gallerySelect: function() {
+          this.$emit("next", 2);
+      },
+      reset: function() {
+          this.$emit("next", 0);
+      }
+      
   }
 }
 </script>
