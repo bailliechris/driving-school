@@ -17,6 +17,10 @@
     <div v-if="gallery">
       <Gallery />
     </div>
+    <b-button type="is-light" rounded @click="swapContact" expanded>Gallery</b-button>
+    <div v-if="contact">
+      <Contact />
+    </div>
     <Stripes />
     <Footer />
   </div>
@@ -30,6 +34,7 @@ import Gallery from './components/Gallery.vue'
 import FacebookFeed from './components/FacebookFeed.vue'
 import Mission from './components/Mission.vue'
 import Footer from './components/Footer.vue'
+import Contact from './components/Contact.vue'
 
 export default {
   name: 'App',
@@ -40,13 +45,15 @@ export default {
     Gallery,
     FacebookFeed,
     Mission,
-    Footer
+    Footer,
+    Contact
   },
   data() {
       return {
         mission: false,
         gallery: false,
-        feed: false
+        feed: false,
+        contact: false
       }
   },
   methods: {
@@ -59,6 +66,9 @@ export default {
       }
       else if (i == 3) {
         this.feed = !this.feed;
+      }
+      else if (i == 4) {
+        this.contact = !this.contact;
       }
       else if (i == 0) {
         this.resetAll();
@@ -73,10 +83,14 @@ export default {
     swapFeed: function() {
       this.feed = !this.feed;
     },
+    swapContact: function() {
+      this.contact = !this.contact;
+    },
     resetAll: function() {
       this.feed = false;
       this.gallery = false;
       this.mission = false;
+      this.contact = false;
     }
   }
 }

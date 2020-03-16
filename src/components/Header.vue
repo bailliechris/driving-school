@@ -18,7 +18,6 @@
               </h1>
               <h2 class="subtitle">
                 <call-icon /> 01782 899008 
-                <twitter-icon /> @behindthewheel
                 <facebook-icon /> Behind the Wheel
               </h2>
             </div>

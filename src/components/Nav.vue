@@ -12,8 +12,8 @@
             <b-navbar-item href="#" @click="reset">
                 Home
             </b-navbar-item>
-            <b-navbar-item href="#" @click="missionSelect">
-                Mission
+            <b-navbar-item href="#" @click="contact">
+                Contact Us
             </b-navbar-item>
             <b-navbar-dropdown label="More">
                 <b-navbar-item href="#" @click="feedSelect">
@@ -21,6 +21,9 @@
                 </b-navbar-item>
                 <b-navbar-item href="#" @click="gallerySelect">
                     Gallery
+                </b-navbar-item>
+                <b-navbar-item href="#" @click="missionSelect">
+                    Mission
                 </b-navbar-item>
             </b-navbar-dropdown>
         </template>
@@ -44,6 +47,9 @@ export default {
       },
       gallerySelect: function() {
           this.$emit("next", 2);
+      },
+      contact: function() {
+          this.$emit("next", 4);
       },
       reset: function() {
           this.$emit("next", 0);
