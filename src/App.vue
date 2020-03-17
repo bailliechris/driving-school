@@ -17,9 +17,13 @@
     <div v-if="gallery">
       <Gallery />
     </div>
-    <b-button type="is-light" rounded @click="swapContact" expanded>Gallery</b-button>
+    <b-button type="is-light" rounded @click="swapContact" expanded>Contact</b-button>
     <div v-if="contact">
       <Contact />
+    </div>
+    <b-button type="is-light" rounded @click="swapAbout" expanded>About</b-button>
+    <div v-if="about">
+      <About />
     </div>
     <Stripes />
     <Footer />
@@ -35,6 +39,7 @@ import FacebookFeed from './components/FacebookFeed.vue'
 import Mission from './components/Mission.vue'
 import Footer from './components/Footer.vue'
 import Contact from './components/Contact.vue'
+import About from './components/About.vue'
 
 export default {
   name: 'App',
@@ -46,14 +51,16 @@ export default {
     FacebookFeed,
     Mission,
     Footer,
-    Contact
+    Contact,
+    About
   },
   data() {
       return {
         mission: false,
         gallery: false,
         feed: false,
-        contact: false
+        contact: false,
+        about: false
       }
   },
   methods: {
@@ -69,6 +76,9 @@ export default {
       }
       else if (i == 4) {
         this.contact = !this.contact;
+      }
+      else if (i == 5) {
+        this.about = !this.about;
       }
       else if (i == 0) {
         this.resetAll();
@@ -86,11 +96,15 @@ export default {
     swapContact: function() {
       this.contact = !this.contact;
     },
+    swapAbout: function() {
+      this.about = !this.about;
+    },
     resetAll: function() {
       this.feed = false;
       this.gallery = false;
       this.mission = false;
       this.contact = false;
+      this.about = false;
     }
   }
 }

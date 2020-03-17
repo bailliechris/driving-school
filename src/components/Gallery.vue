@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="box">
         <b-carousel :indicator-inside="false">
             <b-carousel-item v-for="(item, i) in 6" :key="i">
                 <span class="image">

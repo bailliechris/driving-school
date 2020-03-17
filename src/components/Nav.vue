@@ -25,6 +25,9 @@
                 <b-navbar-item href="#" @click="missionSelect">
                     Mission
                 </b-navbar-item>
+                <b-navbar-item href="#" @click="about">
+                    About
+                </b-navbar-item>
             </b-navbar-dropdown>
         </template>
     </b-navbar>
@@ -50,6 +53,9 @@ export default {
       },
       contact: function() {
           this.$emit("next", 4);
+      },
+      about: function() {
+          this.$emit("next", 5);
       },
       reset: function() {
           this.$emit("next", 0);
