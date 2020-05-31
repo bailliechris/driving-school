@@ -1,7 +1,7 @@
 <template>
     <b-navbar type="is-white" fixed-top>
         <template slot="brand">
-            <b-navbar-item tag="router-link" :to="{ path: '/' }">
+            <b-navbar-item>
                 <img
                     src="../assets/logosmall.jpg" height="80"
                     alt="Behind the Wheel Driving School"
@@ -27,6 +27,9 @@
                 </b-navbar-item>
                 <b-navbar-item href="#" @click="about">
                     About
+                </b-navbar-item>
+                <b-navbar-item href="#" @click="testi">
+                    Testimonials
                 </b-navbar-item>
             </b-navbar-dropdown>
         </template>
@@ -57,10 +60,12 @@ export default {
       about: function() {
           this.$emit("next", 5);
       },
+      testi: function() {
+          this.$emit("next", 6);
+      },
       reset: function() {
           this.$emit("next", 0);
       }
-      
   }
 }
 </script>

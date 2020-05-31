@@ -7,12 +7,6 @@
     <div v-if="mission">
       <Mission />
     </div>
-    <b-button type="is-light" rounded @click="swapFeed" expanded>Updates from Facebook</b-button>
-    <div v-if="feed">
-      <div class="box">
-        <FacebookFeed />
-      </div>
-    </div>
     <b-button type="is-light" rounded @click="swapGallery" expanded>Gallery</b-button>
     <div v-if="gallery">
       <Gallery />
@@ -25,6 +19,10 @@
     <div v-if="about">
       <About />
     </div>
+    <b-button type="is-light" rounded @click="swapTesti" expanded>Testimonials</b-button>
+    <div v-if="testimonials">
+      <Testimonials />
+    </div>
     <Stripes />
     <Footer />
   </div>
@@ -35,7 +33,7 @@ import Header from './components/Header.vue'
 import Nav from './components/Nav.vue'
 import Stripes from './components/Stripes.vue'
 import Gallery from './components/Gallery.vue'
-import FacebookFeed from './components/FacebookFeed.vue'
+import Testimonials from './components/Testimonials.vue'
 import Mission from './components/Mission.vue'
 import Footer from './components/Footer.vue'
 import Contact from './components/Contact.vue'
@@ -48,7 +46,7 @@ export default {
     Nav,
     Stripes,
     Gallery,
-    FacebookFeed,
+    Testimonials,
     Mission,
     Footer,
     Contact,
@@ -60,6 +58,7 @@ export default {
         gallery: false,
         feed: false,
         contact: false,
+        testimonials: false,
         about: false
       }
   },
@@ -80,6 +79,9 @@ export default {
       else if (i == 5) {
         this.about = !this.about;
       }
+      else if (i == 6) {
+        this.testimonials = !this.testimonials;
+      }
       else if (i == 0) {
         this.resetAll();
       }
@@ -99,10 +101,14 @@ export default {
     swapAbout: function() {
       this.about = !this.about;
     },
+    swapTesti: function() {
+      this.testimonials = !this.testimonials;
+    },
     resetAll: function() {
       this.feed = false;
       this.gallery = false;
       this.mission = false;
+      this.testimonials = false;
       this.contact = false;
       this.about = false;
     }
