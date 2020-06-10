@@ -24,6 +24,8 @@
       <Testimonials />
     </div>
     <Stripes />
+    <CreatePost />
+    <Stripes />
     <Footer />
   </div>
 </template>
@@ -38,6 +40,7 @@ import Mission from './components/Mission.vue'
 import Footer from './components/Footer.vue'
 import Contact from './components/Contact.vue'
 import About from './components/About.vue'
+import CreatePost from './components/CreatePost.vue'
 
 export default {
   name: 'App',
@@ -50,7 +53,8 @@ export default {
     Mission,
     Footer,
     Contact,
-    About
+    About,
+    CreatePost
   },
   data() {
       return {

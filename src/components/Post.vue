@@ -1,42 +1,51 @@
 <template>
-    <div class = "post-item" v-bind:class="{'is-complete':post.completed}">
-        <p>
-            <input type="checkbox" v-on:change="markComplete">
-            {{post.title}}
-        </p>
+
+    <div class="box">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    {{post.title}}
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    {{post.text}}
+                    <figure class="image is-256x256">
+                        <img src="../assets/logosmall.jpg">
+                    </figure>
+                    {{post.image}}
+                </div>
+            </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    Time/Date Posted: {{post.time}}
+                </p>
+            </footer>
+        </div>
     </div>
+
 </template>
 
 <script>
 export default {
     name: "Post",
     props: ["post"],
+    data() {
+        return {
+            img: ""
+        }
+    },
     methods: {
         markComplete(){
             this.post.completed = !this.post.completed;
         }
+    },
+    created() {
+        this.img = "../assets/logosmall.jpg" ;
     }
 }
 </script>
 
 <style scoped>
-.post-item{
-    background:cornsilk;
-    padding: 10px;
-    border-bottom: 1px #ccc dotted;
-}
 
-.is-complete {
-    text-decoration:line-through;
-}
-
-.del {
-    background: red;
-    color:white;
-    border:none;
-    padding: 5px 9px;
-    border-radius: 50%;
-    cursor: pointer;
-    float: right;
-}
 </style>

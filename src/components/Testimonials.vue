@@ -1,6 +1,6 @@
 <template>
     <div>
-       <div  v-for="post in testimonials" v-bind:key="post.id">
+       <div  v-for="post in testimonials" v-bind:key="post._id">
            <Post v-bind:post="post" />
 
         </div>
@@ -24,8 +24,10 @@ export default {
     },
 
     created() {
-        axios.get("https://jsonplaceholder.typicode.com/todos?_limit=5")
-        .then(res => this.testimonials = res.data);
+        axios.get("http://localhost:5000/api/testi/")
+        .then((res) => {
+            this.testimonials = res.data;
+        });
   }
 }
 </script>

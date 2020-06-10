@@ -1,7 +1,7 @@
 <template>
     <b-navbar type="is-white" fixed-top>
         <template slot="brand">
-            <b-navbar-item>
+            <b-navbar-item href="#" @click="toggleModals">
                 <img
                     src="../assets/logosmall.jpg" height="80"
                     alt="Behind the Wheel Driving School"
@@ -31,17 +31,27 @@
                 <b-navbar-item href="#" @click="testi">
                     Testimonials
                 </b-navbar-item>
+                <b-navbar-item @click="toggleModals">
+                    Admin Page
+                    <Modals v-if="showModals" @close="toggleModals" title="Login" body="Please enter username and pasword." />
+                </b-navbar-item>
             </b-navbar-dropdown>
         </template>
     </b-navbar>
 </template>
 
 <script>
+import Modals from './Modals.vue'
+
 export default {
   name: 'Nav',
+  components: {
+    Modals
+  },
   data() {
     return {
     //  image: mdiPhone
+        showModals: false
     }
   },
   methods: {
@@ -65,8 +75,11 @@ export default {
       },
       reset: function() {
           this.$emit("next", 0);
+      },
+      toggleModals: function () {
+        this.showModals = !this.showModals;
       }
-  }
+    }
 }
 </script>
 
