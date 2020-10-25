@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <article class="message is-success" v-show="isVisible">
+        <article class="message is-black" v-show="isVisible">
             <div class="message-header">
                 <p>{{title}}</p>
                 <button class="delete" aria-label="delete" @click="toggle_message"></button>
@@ -28,7 +28,6 @@ export default {
     },
 
     methods: {
-    // https://quiz-scores-admin.herokuapp.com/
       toggle_message: function () {
           this.isVisible = !this.isVisible;
       }

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import App from './App.vue'
@@ -14,9 +15,25 @@ Vue.component('twitter-icon', Twitter);
 Vue.component('facebook-icon', Facebook);
 
 Vue.use(Buefy)
+Vue.use(Vuex);
+
+// Create a store
+const store = new Vuex.Store({
+  state: {
+    // variables go here
+    auth: false
+  },
+  mutations: {
+    // functions to run go here
+    toggleauth(state) {
+      state.auth = !state.auth
+    }
+  }
+});
 
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-}).$mount('#app')
+  store: store
+}).$mount('#app');

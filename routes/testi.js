@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongodb = require('mongodb').MongoClient;
 /* Used in deleting a specific object from the collection */
@@ -7,10 +9,9 @@ const router = express.Router();
 
 //Connect to MONGODB Get whole document
 async function loadPostsCollection() {
-              //mongodb+srv://posts_user:<password>@learningcluster-5qutw.azure.mongodb.net/test?retryWrites=true&w=majority
-  const uri = "mongodb+srv://posts_user:adminp@learningcluster-5qutw.azure.mongodb.net/test?retryWrites=true&w=majority";
+  const uri = process.env.MONGO_URI;
   const client = new mongodb(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+          
   await client.connect();
 
   //Load DB "vuefullstack" and table "posts"
@@ -22,8 +23,15 @@ router.get('/', async (req, res) => {
   const posts = await loadPostsCollection();
 
   let result = await posts.find({}).toArray();
+
+  if (result.length > 0) {
+    res.status(200).send(result);
+  }
+  else {
+    res.status(400).send({ msg: "No results" });
+  }
   
-  res.send(result);
+
 });
 
 //Add Posts

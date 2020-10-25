@@ -19,14 +19,20 @@ export default {
 
     data() {
         return {
-            testimonials: []
+            testimonials: [],
+            msg: ""
         }
     },
 
     created() {
         axios.get("http://localhost:5000/api/testi/")
         .then((res) => {
-            this.testimonials = res.data;
+            if (res.status == 200){
+                this.testimonials = res.data;
+            }
+            else {
+                this.msg = res.data;
+            }           
         });
   }
 }

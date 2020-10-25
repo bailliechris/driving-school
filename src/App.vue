@@ -23,10 +23,14 @@
     <div v-if="testimonials">
       <Testimonials />
     </div>
+    <div v-if="auth">
+      <b-button type="is-light" rounded @click="swapCreate" expanded>Create Testimonial</b-button>
+      <div v-if="showcreate">
+        <CreatePost />
+      </div>
+    </div>
     <Stripes />
-    <CreatePost />
-    <Stripes />
-    <Footer />
+    <Footer v-on:auth-update="passauth" />
   </div>
 </template>
 
@@ -41,6 +45,8 @@ import Footer from './components/Footer.vue'
 import Contact from './components/Contact.vue'
 import About from './components/About.vue'
 import CreatePost from './components/CreatePost.vue'
+import cookie from 'js-cookie'
+import {mapState} from 'vuex'
 
 export default {
   name: 'App',
@@ -63,10 +69,32 @@ export default {
         feed: false,
         contact: false,
         testimonials: false,
-        about: false
+        about: false,
+        showcreate: false
       }
   },
+  watch: {
+    authval: function () {
+      if(this.authval) {
+        if(cookie.get('auth') == true) {
+          this.showcreate = true;
+        }
+      }
+    }
+  },
   methods: {
+    testauth: function() {
+      if(cookie.get('auth') == true) {
+        this.testauthv = cookie.get('auth');
+        this.authval = true;
+        //return true;
+      } 
+      else {
+        this.testauthv = cookie.get('auth');
+        this.authval = false;
+        //return false;
+      }
+    },
     displayItem: function(i) {
       if (i == 1) {
         this.mission = !this.mission;
@@ -108,6 +136,9 @@ export default {
     swapTesti: function() {
       this.testimonials = !this.testimonials;
     },
+    swapCreate: function() {
+      this.showcreate = !this.showcreate;
+    },
     resetAll: function() {
       this.feed = false;
       this.gallery = false;
@@ -115,7 +146,14 @@ export default {
       this.testimonials = false;
       this.contact = false;
       this.about = false;
+      this.showcreate = false;
+    },
+    passauth: function(authstatus) {
+      this.authval = authstatus;
     }
+  },
+  computed: {
+    ...mapState(['auth'])
   }
 }
 </script>
